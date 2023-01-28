@@ -55,8 +55,10 @@ public class MovieRepository {
     public void deleteAllDirectors(){
         HashSet<String> set=new HashSet<>();
         for(String dir:mdMap.keySet()){
-            for(String movie:mdMap.get(dir)){
+            for(String movie:mdMap.get(dir)) {
                 set.add(movie);
+                directorMap.remove(dir);
+                mdMap.remove(dir);
             }
         }
         for (String movie:set){

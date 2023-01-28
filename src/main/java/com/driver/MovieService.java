@@ -20,6 +20,7 @@ public class MovieService {
     public List<String> getMoviesByDirectorName(String name){return movieRepository.getMoviesByDirectorName(name);}
     public List<String> findAllMovies(){return movieRepository.findAllMovies();}
     public void deleteDirectorByName(String name){movieRepository.deleteDirectorByName(name);}
+    public void deleteAllDirectors(){movieRepository.deleteAllDirectors();}
 
 
 

@@ -2,10 +2,8 @@ package com.driver;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 @Repository
 public class MovieRepository {
     Map<String,Movie> movieMap=new HashMap<>();
@@ -42,9 +40,30 @@ public class MovieRepository {
     public List<String> findAllMovies(){
         return (List<String>) movieMap.keySet();
     }
-    public void deleteDirectorByName(String name){
-        directorMap.remove(name);
+    public void deleteDirectorByName(String director){
+        List<String> movie=new ArrayList<>();
+        if(mdMap.containsKey(director)){
+            movie=mdMap.get(director);
+            for(String m:movie){
+                if(movieMap.containsKey(m)){movieMap.remove(m);}
+            }
+        }
+        directorMap.remove(director);
+        if(directorMap.containsKey(director)){directorMap.remove(director);}
     }
+
+    public void deleteAllDirectors(){
+        HashSet<String> set=new HashSet<>();
+        for(String dir:mdMap.keySet()){
+            for(String movie:mdMap.get(dir)){
+                set.add(movie);
+            }
+        }
+        for (String movie:set){
+            if(movieMap.containsKey(movie)){movieMap.remove(movie);}
+        }
+    }
+
 
 
 

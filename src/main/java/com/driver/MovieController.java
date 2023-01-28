@@ -53,6 +53,11 @@ public class MovieController {
         movieService.deleteDirectorByName(name);
         return new ResponseEntity<>(HttpStatus.FOUND);
     }
+    @DeleteMapping("/delete-all-directors")
+    public ResponseEntity deleteAllDirectors(){
+        movieService.deleteAllDirectors();
+        return new ResponseEntity<>(HttpStatus.FOUND);
+    }
 
 
 
